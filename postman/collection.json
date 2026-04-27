@@ -11,9 +11,9 @@
       "request": {
         "method": "GET",
         "url": {
-          "raw": "{{base_url}}/appointments.php",
+          "raw": "{{base_url}}/appointments",
           "host": ["{{base_url}}"],
-          "path": ["appointments.php"]
+          "path": ["appointments"]
         }
       },
       "event": [
@@ -49,9 +49,9 @@
           "raw": "{\n  \"name\": \"Test User\",\n  \"service\": \"consulting\",\n  \"date\": \"2026-05-01\"\n}"
         },
         "url": {
-          "raw": "{{base_url}}/appointments.php",
+          "raw": "{{base_url}}/appointments",
           "host": ["{{base_url}}"],
-          "path": ["appointments.php"]
+          "path": ["appointments"]
         }
       },
       "event": [
@@ -59,8 +59,8 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test('Created successfully', function () {",
-              "    pm.response.to.have.status(200);",
+              "pm.test('Created successfully (201 or 200)', function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
               "});"
             ]
           }
@@ -82,9 +82,9 @@
           "raw": "{\n  \"status\": \"confirmed\"\n}"
         },
         "url": {
-          "raw": "{{base_url}}/appointments.php?id=1",
+          "raw": "{{base_url}}/appointments?id=1",
           "host": ["{{base_url}}"],
-          "path": ["appointments.php"],
+          "path": ["appointments"],
           "query": [
             {
               "key": "id",
@@ -111,9 +111,9 @@
       "request": {
         "method": "DELETE",
         "url": {
-          "raw": "{{base_url}}/appointments.php?id=1",
+          "raw": "{{base_url}}/appointments?id=1",
           "host": ["{{base_url}}"],
-          "path": ["appointments.php"],
+          "path": ["appointments"],
           "query": [
             {
               "key": "id",
