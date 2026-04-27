@@ -30,7 +30,7 @@ echo "▶️ Running tests..."
 
 newman run $COLLECTION \
     -e $ENVIRONMENT \
-    -r cli,html \
+    -r cli,htmlextra \
     --reporter-html-export $REPORT_FILE
 
 # 📊 Capture result

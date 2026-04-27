@@ -14,7 +14,7 @@
         "required": ["id", "name", "service", "date", "status"],
         "properties": {
           "id": {
-            "type": "string"
+            "type": "integer"
           },
           "name": {
             "type": "string",
