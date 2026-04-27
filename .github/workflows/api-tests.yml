@@ -1,0 +1,38 @@
+name: API Testing Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Validate OpenAPI
+        run: npm run validate:openapi
+
+      - name: Run API tests
+        run: npm run test:report
+
+      - name: Debug collection
+        run: cat postman/collection.json
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-test-report
+          path: reports/report.html
