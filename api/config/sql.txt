@@ -1,0 +1,12 @@
+CREATE DATABASE energyner;
+
+USE energyner;
+
+CREATE TABLE appointments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    service VARCHAR(100) NOT NULL,
+    date DATETIME NOT NULL,
+    status ENUM('pending','confirmed','cancelled') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

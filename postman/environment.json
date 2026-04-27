@@ -1,0 +1,10 @@
+{
+  "name": "Appointment Environment",
+  "values": [
+    {
+      "key": "base_url",
+      "value": "http://localhost/www.energyner.net/19-api/appointments/api/v1",
+      "enabled": true
+    }
+  ]
+}

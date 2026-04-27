@@ -1,0 +1,58 @@
+ /* Ajuste general para móviles */
+ /*swegger.css*/
+    @media (max-width: 768px) {
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+      }
+
+      #swagger-ui {
+        padding: 10px;
+      }
+
+      /* Aumentar tamaño de texto */
+      .swagger-ui .info h2,
+      .swagger-ui .opblock-summary-description,
+      .swagger-ui .opblock-summary-path,
+      .swagger-ui .opblock-summary-method {
+        font-size: 1.1rem;
+      }
+
+      /* Botones más grandes */
+      .swagger-ui .btn {
+        padding: 10px 14px;
+        font-size: 1rem;
+      }
+
+      /* Inputs más accesibles */
+      .swagger-ui input[type="text"],
+      .swagger-ui textarea {
+        font-size: 1rem;
+        padding: 10px;
+      }
+
+      /* Evitar scroll horizontal */
+      .swagger-ui .wrapper {
+        overflow-x: hidden;
+      }
+
+      /* Ajustar tablas */
+      .swagger-ui table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+      }
+    }
+
+    /* Ajustes para pantallas muy pequeñas (iPhone SE, Android compactos) */
+    @media (max-width: 480px) {
+      .swagger-ui .info h2 {
+        font-size: 1rem;
+      }
+
+      .swagger-ui .opblock {
+        margin: 0;
+      }
+    }

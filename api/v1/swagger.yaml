@@ -1,0 +1,112 @@
+openapi: 3.0.0
+info:
+  title: Appointment Booking API
+  version: 1.0.0
+  description: API for managing appointments
+
+servers:
+  - url: http://www.energyner.net/19-api/appointments/api/v1
+
+paths:
+  /appointments:
+    get:
+      summary: Get all appointments
+      responses:
+        '200':
+          description: List of appointments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Appointment'
+
+    post:
+      summary: Create a new appointment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppointmentInput'
+      responses:
+        '201':
+          description: Appointment created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+
+    patch:
+      summary: Update appointment status
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+      responses:
+        '200':
+          description: Appointment updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+
+    delete:
+      summary: Delete appointment
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Appointment deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+components:
+  schemas:
+    Appointment:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        service:
+          type: string
+        date:
+          type: string
+        status:
+          type: string
+
+    AppointmentInput:
+      type: object
+      required:
+        - name
+        - service
+        - date
+      properties:
+        name:
+          type: string
+        service:
+          type: string
+        date:
+          type: string

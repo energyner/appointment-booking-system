@@ -1,0 +1,139 @@
+{
+  "info": {
+    "name": "Appointment Booking API",
+    "_postman_id": "12345-abcde",
+    "description": "Testing collection for Appointment Booking System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET Appointments",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/appointments.php",
+          "host": ["{{base_url}}"],
+          "path": ["appointments.php"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response has success true', function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json.success).to.eql(true);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "POST Create Appointment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"service\": \"consulting\",\n  \"date\": \"2026-05-01\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/appointments.php",
+          "host": ["{{base_url}}"],
+          "path": ["appointments.php"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Created successfully', function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "PATCH Update Appointment",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"confirmed\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/appointments.php?id=1",
+          "host": ["{{base_url}}"],
+          "path": ["appointments.php"],
+          "query": [
+            {
+              "key": "id",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Updated successfully', function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "DELETE Appointment",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{base_url}}/appointments.php?id=1",
+          "host": ["{{base_url}}"],
+          "path": ["appointments.php"],
+          "query": [
+            {
+              "key": "id",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Deleted successfully', function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

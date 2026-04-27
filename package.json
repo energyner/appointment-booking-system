@@ -1,0 +1,33 @@
+{
+  "name": "appointment-booking-system",
+  "version": "1.0.0",
+  "description": "API testing environment for Appointment Booking System",
+  "main": "index.js",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test:api": "newman run postman/collection.json -e postman/environment.json",
+    "test:report": "npx mkdirp reports && newman run postman/collection.json -e postman/environment.json -r cli,htmlextra --reporter-htmlextra-export reports/report.html",
+    "validate:openapi": "npx swagger-cli validate appointments/api/v1/swagger.yaml",
+    "test:full": "npm run validate:openapi && npm run test:api"
+  },
+  "devDependencies": {
+    
+    "@apidevtools/swagger-cli": "^4.0.4",
+    "mkdirp": "^3.0.1",
+    "newman": "^6.1.0",
+    "newman-reporter-htmlextra": "^1.23.1"
+  },
+  "keywords": [
+    "api",
+    "testing",
+    "postman",
+    "newman",
+    "openapi",
+    "swagger"
+  ],
+  "author": "René F. Ruano",
+  "license": "MIT"
+}
