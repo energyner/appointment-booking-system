@@ -26,6 +26,9 @@ jobs:
       - name: Run API tests and generate report
         run: npm run test:report
 
+      - name: Debug collection used in pipeline
+        run: cat postman/collection.json
+
       - name: Upload report artifact
         uses: actions/upload-artifact@v3
         with:
